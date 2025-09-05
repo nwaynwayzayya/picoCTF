@@ -40,8 +40,8 @@ chmod +x warm
 
 ### Notes / Tips
 
-- `./[filename]` --> Run or execute the file
-- `chmod +x` --> Give file the permission to be executed
-- `[command] -h` or `[command] -help` --> Get more information about the commands
+- `./[filename]` --> Run or execute the file in the current directory
+- `chmod +x [filename]` --> Give executable permissions to a file
+- `[command] -h` or `[command] -help` --> Display usage information and available options for a program.
 
 
