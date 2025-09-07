@@ -14,7 +14,7 @@ Here's a `dictionary` with all possible passwords based on the password conventi
 wget [link]
 
 # Step 2: We check the python script first to see what it is.
-cat level4.py
+cat level5.py
 # Inside the script, we find that the password is a list.
 # The strings below are 100 possibilities for the correct password. 
 #   (Only 1 is correct)
