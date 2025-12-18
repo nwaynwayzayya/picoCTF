@@ -1,0 +1,286 @@
+# picoCTF Cheatsheet - Easy Challenges
+
+*Compiled from all Easy-level challenges across picoCTF years*
+
+## Table of Contents
+- [General Skills](#general-skills)
+- [Cryptography](#cryptography)
+- [Web Exploitation](#web-exploitation)
+- [Binary Exploitation](#binary-exploitation)
+- [Forensics](#forensics)
+- [Reverse Engineering](#reverse-engineering)
+- [System Administration](#system-administration)
+
+---
+
+## General Skills
+
+### File Operations & Navigation
+```bash
+# List files and directories
+ls
+ls -la        # Detailed listing with hidden files
+ls -R         # Recursive listing
+
+# Find files
+find . -name "filename"
+find . -type f -name "*.txt"
+
+# File content examination
+cat filename
+head filename
+tail filename
+less filename
+strings filename    # Extract printable strings from binary files
+
+# File permissions and execution
+chmod +x filename
+./filename
+
+# Archive operations
+unzip filename.zip
+tar -xf filename.tar
+```
+
+### Text Processing & Search
+```bash
+# Grep - searching text patterns
+grep "pattern" filename
+grep -r "pattern" directory/
+grep -i "pattern" filename     # Case insensitive
+grep -v "pattern" filename     # Invert match
+
+# Text manipulation
+cat filename | grep "pattern"
+echo "text" | base64           # Base64 encoding
+echo "encoded" | base64 -d     # Base64 decoding
+```
+
+### Network Operations
+```bash
+# Netcat - network connections
+nc hostname port
+nc -l port                     # Listen mode
+
+# SSH connections
+ssh username@hostname
+ssh -p port username@hostname
+```
+
+---
+
+## Cryptography
+
+### Caesar Cipher
+```bash
+# Manual decryption (try different shifts)
+# A=0, B=1, C=2... Z=25
+# Shift by 13 is ROT13
+```
+
+### Hash Functions
+```bash
+# Generate checksums
+md5sum filename
+sha1sum filename
+sha256sum filename
+
+# Verify file integrity
+sha256sum files/* | grep "expected_hash"
+```
+
+### Base Conversions
+```python
+# Python base conversions
+# Decimal to binary
+bin(number)
+# Decimal to hex
+hex(number)
+# Binary to decimal
+int('1010', 2)
+# Hex to decimal  
+int('A', 16)
+```
+
+### Number Systems
+- **Binary (base 2)**: 0, 1
+- **Octal (base 8)**: 0-7  
+- **Decimal (base 10)**: 0-9
+- **Hexadecimal (base 16)**: 0-9, A-F
+
+---
+
+## Web Exploitation
+
+### Browser Developer Tools
+```bash
+# Inspect HTML source
+Right-click → "View Page Source"
+F12 → Elements tab
+
+# Check Network requests
+F12 → Network tab
+Look for hidden parameters, cookies, headers
+```
+
+### HTTP Methods & Headers
+```bash
+# curl commands
+curl -X GET url
+curl -X POST url -d "data=value"
+curl -H "Custom-Header: value" url
+
+# Check different HTTP methods
+GET, POST, PUT, DELETE, HEAD
+```
+
+### Common Web Files
+```bash
+# Check for common files
+/robots.txt               # Robot exclusion protocol
+/.htaccess               # Apache config
+/admin                   # Admin panels
+/login                   # Login pages
+```
+
+### Cookies & Sessions
+```bash
+# Browser console (F12)
+document.cookie          # View cookies
+localStorage            # Check local storage
+sessionStorage          # Check session storage
+```
+
+
+---
+
+## Forensics
+
+### Image Analysis
+```bash
+# Image metadata
+exiftool image.jpg
+identify image.jpg       # ImageMagick
+
+# Steganography
+steghide extract -sf image.jpg
+binwalk image.jpg        # Analyze embedded files
+```
+
+### File Analysis
+```bash
+# File type identification
+file filename
+hexdump -C filename      # Hex dump
+xxd filename            # Another hex dump tool
+
+# Archive analysis
+binwalk filename        # Find embedded files
+```
+
+---
+
+## Reverse Engineering
+
+### Basic Analysis
+```bash
+# Strings extraction
+strings binary_file
+
+# File information
+file binary_file
+```
+
+### Python Debugging
+```python
+# Fix common Python errors
+# Indentation errors - use consistent spaces/tabs
+# Syntax errors - check parentheses, quotes, colons
+# Import errors - verify module names
+
+# Python execution
+python script.py
+python3 script.py
+```
+
+---
+
+## System Administration
+
+### User & Permissions
+```bash
+# User information
+whoami
+id
+sudo -l                 # Check sudo permissions
+
+# File permissions
+chmod 755 filename      # rwxr-xr-x
+chmod 644 filename      # rw-r--r--
+```
+
+### Process Management
+```bash
+# Process information
+ps aux
+top
+htop
+kill PID
+killall process_name
+```
+
+---
+
+## Common CTF Patterns & Flags
+
+### Flag Formats
+- `picoCTF{flag_content}`
+- Look for patterns in hex, base64, or encoded text
+- Flags often contain underscores, numbers, and lowercase letters
+
+### Common Encoding/Decoding
+```bash
+# Base64
+echo "string" | base64
+echo "encoded" | base64 -d
+
+# URL encoding
+# %20 = space, %3A = :, %2F = /
+
+# Hex encoding
+echo "string" | xxd
+echo "hex" | xxd -r -p
+```
+
+### Quick Wins
+1. **View source code** - Right-click → View Source
+2. **Check robots.txt** - website.com/robots.txt  
+3. **Inspect network traffic** - F12 → Network tab
+4. **Try common passwords** - admin, password, 123456
+5. **Look for hidden files** - ls -la, find commands
+6. **Check file metadata** - exiftool, strings
+7. **Test different encodings** - base64, hex, Caesar cipher
+8. **Examine HTTP headers** - curl -I, browser dev tools
+
+### Tool Installation (if needed)
+```bash
+# Common CTF tools
+sudo apt install netcat-openbsd
+sudo apt install binutils
+sudo apt install radare2
+sudo apt install steghide
+sudo apt install exiftool
+```
+
+---
+
+## Notes
+- Always read challenge descriptions carefully
+- Use hints provided in challenges
+- Try multiple approaches if first attempt fails
+- Practice with different encoding/decoding methods
+- Learn to use browser developer tools effectively
+- Understand basic networking and web concepts
+- Master command line text processing tools
+
+*Last updated: December 2025*
