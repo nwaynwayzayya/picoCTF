@@ -262,16 +262,6 @@ echo "hex" | xxd -r -p
 7. **Test different encodings** - base64, hex, Caesar cipher
 8. **Examine HTTP headers** - curl -I, browser dev tools
 
-### Tool Installation (if needed)
-```bash
-# Common CTF tools
-sudo apt install netcat-openbsd
-sudo apt install binutils
-sudo apt install radare2
-sudo apt install steghide
-sudo apt install exiftool
-```
-
 ---
 
 ## Notes
